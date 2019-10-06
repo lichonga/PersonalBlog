@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人博客</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/guestBook.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/axios.js"></script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="" class="title">我的个人博客 | 技术博客</a>
+            <ul class="menu">
+                <li><a href="/index.html">首页</a></li>
+                <li><a href="/map.html">地图</a></li>
+                <li><a href="/about.html">关于</a></li>
+                <li><a href="/guestBook.html">留言</a></li>
+            </ul>
+            <div class="search_bar">
+                <input type="text" placeholder="输入关键词查找">
+                <button>搜索</button>
+            </div>
+        </div>
+    </header>
+    <div class="content">
+        <div class="content_left">
+            <div class="description">
+                <p>接受电话发生科技对方过后</p>
+                <p style="color:red">看，没地方进口量发到你v,jd </p>
+                <p style="color:red"> 健康的符合国家开始的</p>
+            </div>
+            <div class="blog_comments" id="blog_comments">
+                    <span class="blog_comments_msg">评论： 目前有{{msg}}条评论</span>
+                    <div class="blog_comment" v-for="ele in userArr">
+                        <span><b>{{ele.user_name}}</b>: {{ele.options}} 发表于 {{ele.ctime}} <a style="cursor:pointer"
+                                v-on:click="replyed(ele.id, ele.user_name)">[回复]</a></span>
+                        <div>{{ele.commentss}} </div>
+                    </div>
+                </div>
+                <div class="more" id="more">
+                    <button v-on:click="getmore()">更多</button>
+                </div>
+                <div class="send_comment" id="send_comment">
+                    <span>发表评论</span>
+                    <div>
+                        <input type="hidden" id="reply_name" value="0">
+                        <input type="hidden" id="reply" value="-1">
+                        <input type="text" placeholder="昵称" id="comment_name">
+                        <input type="text" placeholder="邮箱" id="comment_email">
+                    </div>
+                    <div>
+                        <textarea placeholder="无意义的内容我可能不会回复你" id="comment_content"></textarea>
+                    </div>
+                    <div>
+                        <input type="text" placeholder="验证码" id="comment_code">
+                        <span v-html="vcode" v-on:click="changeCode()"></span>
+                    </div>
+                    <button v-on:click="sendComment()">提交评论</button>
+                </div>
+            </div>
+            <div class="content_right">
+                <div class="right_moodule" id="random_tags">
+                    <div>随机标签云</div>
+                    <a  v-for="(ele, index) in tags" v-bind:style="{color:randomColor(), fontSize:randomSize()}" v-bind:href="ele.link">{{ele.text}}</a>
+    
+                </div>
+                <div class="right_moodule" id="new_hot" h>
+                    <div>最近热门</div>
+                    <ul>
+                        <li v-for="temp in titleList"><a v-bind:href="temp.link">{{temp.title}}</a></li>
+    
+                    </ul>
+                </div>
+                <div class="right_moodule" id="new_comments">
+                    <div>最新评论</div>
+                    <ul>
+                        <li v-for="ele in commentList">
+                            <div>
+                                <span>{{ele.name}}</span>
+                                <span class="pull_right">{{ele.date}}</span>
+                            </div>
+                            <p>{{ele.comment}}</p>
+                        </li>
+    
+                    </ul>
+                </div>
+                <div class="right_moodule">
+                    <div>友情链接</div>
+                    <span><a href="">egege</a></span>
+                    <span><a href="">ergegweg</a></span>
+                    <span><a href="">ergwergwe</a></span>
+                    <span><a href="">wertgwer</a></span>
+                    <span><a href="">wertwer </a></span>
+                    <span><a href="">wert</a></span>
+                </div>
+            </div>
+    
+    
+        </div>
+        <footer class="footer">
+            <ul>
+                <li>c/c++</li>
+                <li>c/c++</li>
+                <li>c/c++</li>
+                <li>c/c++</li>
+                <li>c/c++</li>
+                <li>c/c++</li>
+                <li>c/c++</li>
+                <li>c/c++</li>
+                <li>c/c++</li>
+            </ul>
+            <p>
+                fgrjkehrf asjdfkljzxhdnvfklsajdfhagksjdhf lakjsh
+            </p>
+        </footer>
+        <script src="./js/base.js"></script>
+        <script src="./js/guestBook.js"></script>
+    </body>
+    
+    </html>
