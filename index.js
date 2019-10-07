@@ -2,7 +2,7 @@ var express = require("express");
 var globalConfig = require("./config.js");
 var loader = require("./loader.js");
 var app = new express();
-app.use(express.static("./PersonalBlog/page/"));
+app.use(express.static("./page/"));
 // console.log(loader.get('/editEveryDay'))
 app.post("/editEveryDay", loader.get("/editEveryDay"));
 app.get("/queryEveryDay", loader.get("/queryEveryDay"));
